@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 
 class Usuario extends Model {
-    static init(datapom) {
+    static init(datacon) {
         super.init(
             {
                 email: {
@@ -18,11 +18,15 @@ class Usuario extends Model {
                 }
             },
             {
-                sequelize: datapom,
+                sequelize: datacon,
                 tableName: 'Usuarios',
                 modelName: 'usuario'
             }
         );
+    }
+
+    static associate(models) {
+        Usuario.hasMany(models.localizacao, { foreignKey: 'id_user' });
     }
 }
 
