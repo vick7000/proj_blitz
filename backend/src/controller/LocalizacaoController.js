@@ -17,9 +17,13 @@ const read = async(req, res) => {
     if(id != undefined) filtro = { where: { id: id }}
 
 
+    filtro.attributes = {
+        exclude: ['id_user', 'id_alerta'] 
+    }
+
     filtro.include = [
-        { model: Usuario },
-        { model: Alerta}
+        { model: Usuario, attributes: { exclude: ['senha'] } },
+        { model: Alerta }
     ];
 
 
