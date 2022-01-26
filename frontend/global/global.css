@@ -7,7 +7,7 @@
 
 html {
     --background-color: whitesmoke;
-    --base-color: rgb(85, 70, 219);
+    --base-color: #1565c0;
 
     --padding-default: .75rem;
 }
@@ -30,6 +30,7 @@ input[type="text"], input[type="password"] {
     border: .1rem solid var(--base-color);
     padding: var(--padding-default);
     border-radius: 10px;
+    outline: none;
     margin-top: 15px;
 }
 

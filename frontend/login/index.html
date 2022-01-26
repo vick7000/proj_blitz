@@ -17,10 +17,14 @@
             <form>
                 <input type="text" placeholder="email" id="email">
                 <input type="password" placeholder="senha" id="senha">
-                <a>Cadastrar-se</a>
-                <button id="login">Login</button>
+                <a onclick="cadastrar()">Cadastrar-se</a>
+                <input type="file" id="foto" hidden/>
+                <img src="../assets/camera.png" alt="camera" id="camera" width="32" hidden/>
+                <button id="login" type="button" onclick="conectar()">Login</button>
             </form>
         </main>
     </div>
 </body>
+<script src="../global/md5.js"></script>
+<script src="./script.js"></script>
 </html>
