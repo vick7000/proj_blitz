@@ -1,8 +1,11 @@
 const alerta = document.querySelector("#alerta");
 const cadastrar = document.querySelector("#cadastrar");
+const modal = document.querySelector(".modal");
+const menu = document.querySelector(".menu");
 
 var map;
 var seuAlerta;
+
 
  function initMap() {
     map = new google.maps.Map(document.querySelector(".map"), {
@@ -16,9 +19,7 @@ var seuAlerta;
           //addMarker(coord, "Teste", "../assets/radar.png")
           seuAlerta = coord
 
-          alerta.hidden = false;
-          
-          cadastrar.hidden = false;
+          showModal();
       });
 
       navigator.geolocation.getCurrentPosition((location) => {
@@ -26,7 +27,7 @@ var seuAlerta;
 
         map.setCenter(coord);
 
-        addMarker(coord, "Minha Localizacao", "../assets/radar.png");
+        addMarker(coord, "Minha Localizacao", "../assets/destination.png");
       });
  }
 
@@ -50,9 +51,8 @@ var seuAlerta;
    .then(data => {
       if(data.id != undefined) {
         let tipo = alerta.value;
-        addMarker(seuAlerta, tipo, "../assets/destination.png");
-        alerta.hidden = true;
-        cadastrar.hidden = true;
+        addMarker(seuAlerta, tipo, "../assets/"+ tipo + ".png");
+        closeModal();
       } else {
         alert("Não foi possível informar o alerta");
       }
@@ -82,7 +82,8 @@ var seuAlerta;
         let coordenadas = localizacao.coordenadas.split(',');
         let coord = { lat: Number(coordenadas[0]), lng: Number(coordenadas[1]) };
 
-        addMarker(coord, localizacao.alertum.tipo, "../assets/destination.png");
+        let imagem = "../assets/" + localizacao.alertum.id + ".png";
+        addMarker(coord, localizacao.alertum.tipo, imagem);
      });
    })
  }
@@ -99,3 +100,19 @@ var seuAlerta;
      })
    })
  }
+
+ function showModal() {
+   modal.style.display = "flex"; 
+ }
+
+ function closeModal() {
+   modal.style.display = "none";
+ }
+
+ function showMenu() {
+    menu.style.left = "0px";
+ }
+
+ function closeMenu() {
+    menu.style.left = "-50vw";
+}

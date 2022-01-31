@@ -4,7 +4,7 @@ body {
     width: 100vw;
     height: 100vh;
     /*background-image: linear-gradient(to bottom, var(--base-color), rgb(85, 1, 153));*/
-    background: linear-gradient(to right, #b92b27, var(--base-color));
+    background: linear-gradient(to right, black, white);
     display: flex;
     align-items: center;
     justify-content: center;
