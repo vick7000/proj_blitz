@@ -23,6 +23,13 @@ foto.addEventListener("change", (e) => {
     reader.readAsDataURL(file);
 })
 
+function verificarLogin() {
+    console.log(localStorage.getItem('userdata'));
+    if(localStorage.getItem('userdata') != null) {
+        window.location.href = '../home'
+    }
+} 
+
 function conectar() {
     let data = JSON.stringify({
         email: email.value,
@@ -57,13 +64,18 @@ function registrar() {
     fetch("http://localhost:3000/usuario", {
         "method": "POST",
         "headers": {
-            "Contet-Type": "application/json"
+            "Content-Type": "application/json"
         },
         "body": data
     })
     .then(resp => { return resp.json() })
     .then(data => {
-        console.log(data);
+        if(data.id !== undefined) {
+            localStorage.setItem("userdata", JSON.stringify(data));
+            window.location.href = '../home';
+        } else {
+            alert("Falha ao cadastrar");
+        }
     })
 }
 

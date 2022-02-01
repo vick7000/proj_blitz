@@ -14,6 +14,10 @@ const read = async(req, res) => {
     let filtro = {}
     let id = (req.params.id);
 
+    let id_user = req.query.id_user;
+
+    
+
     if(id != undefined) filtro = { where: { id: id }}
 
 
@@ -26,6 +30,9 @@ const read = async(req, res) => {
         { model: Alerta }
     ];
 
+    if(id_user !== undefined) {
+        filtro.include[0].where = { id: id_user }
+    }
 
     const ret = await Localizacao.findAll(filtro);
 

@@ -5,13 +5,17 @@ const create = async(req, res) => {
 
     try {
         ret = await Usuario.create(data);
+
+
+        delete ret.dataValues.senha;
     } catch(err) {
-        if(err.parent.code == 'ER_DUP_ENTRY') {
+        
+        
                 ret = {
-                    msg: 'Email já cadatrado'
+                    msg: err.errors[0].message
                 }
                 res.status(400)
-        }
+        
     }
 
     res.json(ret);
