@@ -11,33 +11,44 @@
 <body onload="load()">
     <div class="container">
         <div class="dados">
-            <img src="" alt=""/>
-            <input type="text">
-            <input type="password">
+            <img src="" alt="" id="imgUser" width="128"/>
+            <input type="text" id="emailUser">
+            <input type="password" id="pswUser">
+            <input type="file" id="foto" hidden/>
+            <img src="../assets/camera.png" alt="Camera" id="camera" width="32"/>
+            <button onclick="atualizarDados()">Atualizar</button>
         </div>
-        <div class="visualizacao">
-        </div>
-        <div class="nossosAlertas">
-            <div>
-                <h2>NOSSOS Alertas</h2>
-                <span>
-                    <img src="../assets/arrow.png" alt="Seta"/>
-                </span>
+        
+        <div class="alertas">
+            <div class="title">
+                <h2>Alertas Ativos</h2>
+                    <img src="../assets/arrow.png" onclick="mostrarNOSSOSAlertas(this)" class="seta up" alt="Seta"/>
             </div>
-            <table>
-                <thead>
-                    <tr>
-                        <td>ID</td>
-                        <td>Coordenadas</td>
-                        <td>Tipo</td>
-                    </tr>
-                </thead>
-                <tbody>
-
-                </tbody>
-            </table>
+            <div class="containerdata" id="alerts"></div>
+            <button>Salvar</button>
+        </div>
+        <div class="alertas">
+            <div class="title">
+                <h2>NOSSOS Alertas</h2>
+                    <img src="../assets/arrow.png" onclick="mostrarNOSSOSAlertas(this)" class="seta up" alt="Seta"/>
+            </div>
+            <div class="containerdata">
+                <table id="show">
+                    <thead>
+                        <tr>
+                            <td>ID</td>
+                            <td>Coordenadas</td>
+                            <td>Tipo</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+    
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </body>
+<script src="../global/md5.js"></script>
 <script src="./script.js"></script>
 </html>

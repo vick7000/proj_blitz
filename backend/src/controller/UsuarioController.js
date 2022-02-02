@@ -3,18 +3,20 @@ const Usuario = require('../model/Usuario');
 const create = async(req, res) => {
     const data = req.body;
 
+    let ret = [];
+
     try {
         ret = await Usuario.create(data);
 
-
         delete ret.dataValues.senha;
     } catch(err) {
-        
-        
-                ret = {
-                    msg: err.errors[0].message
-                }
-                res.status(400)
+        if(err.parentcode == 'ER_DUP_ENTRY') {
+            ret = {
+                msg: 'Email já cadastrado'
+            }
+            res.status(400)
+        }
+                
         
     }
 
@@ -43,6 +45,9 @@ const update = async(req, res) => {
     });
 
     ret = await Usuario.findAll({
+        attributes: {
+            exclude: ['senha']
+        },
         where: { id: id }
     })
 
@@ -65,6 +70,8 @@ const remove = async (req, res) => {
 
 const login = async (req, res) => {
     const data = req.body;
+
+    console.log(data);
 
     const ret = await Usuario.findAll({
         attributes: {

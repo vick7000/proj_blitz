@@ -1,17 +1,75 @@
 @import url('../global/global.css');
 
 
-.NOSSOSAlertas {
-    width: 90vw;
-    height: 3rem;
+.alertas {
+    width: 95vw;
+    height: 2.6rem;
     border: 1px solid gray;
     border-radius: 10px;
     overflow: hidden;
     padding: 10px;
+    transition: all .2s;
+}
+
+.show {
+    height: 18rem;
 }
 
 .title {
-    display: vflex;
+    display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.seta {
+    transition: all .2s;
+}
+
+.up {
+    transform: rotate(180deg);
+}
+
+.containerdata{
+    height: 14.5rem;
+    overflow: scroll;
+    margin-top: .5rem;
+}
+
+table {
+    width: 100%;
+    color: whitesmoke;
+}
+
+thead {
+    background-color: rgb(8, 8, 8);
+    color: whitesmoke;
+}
+
+tbody > tr {
+    background-color: rgb(53, 50, 50);
+}
+
+tbody > tr:nth-child(3) {
+    background-color: #870bb8;
+}
+
+#alerts > div {
+    margin: 1.5px;
+}
+
+#alerts {
+    display: flex;
+    flex-direction: column;
+    height: 10rem;
+}
+
+#alerts  label {
+    font-size: 1.25rem;
+    margin-left: 10px;
+}
+
+.dados {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
