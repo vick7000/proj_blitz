@@ -62,6 +62,8 @@ function carregarNOSSOSAlertas() {
 }
 
 function carregarAlertas() {
+    let alertas = localStorage.getItem('alertas');
+
     fetch("http://localhost:3000/alerta")
     .then(resp => { return resp.json(); })
     .then(data => {
@@ -75,7 +77,11 @@ function carregarAlertas() {
 
             checkbox.type = "checkbox";
             checkbox.name = alerta.id;
-            checkbox.checked = true;
+            if(alertas !== null) {
+                if(alertas.includes(alerta.id)) checkbox.checked = true;
+            } else {
+                checkbox.checked = true;
+            }
 
             meualerta.appendChild(checkbox);
             meualerta.appendChild(label);
@@ -117,4 +123,17 @@ function atualizarDados() {
 function mostrarNOSSOSAlertas(e) {
     e.classList.toggle("up");
     e.parentNode.parentNode.classList.toggle("show");
+}
+
+function salvarAlertasAtivos() {
+    let alertas = document.querySelector("#alerts").querySelectorAll("input");
+    let arr = [];
+
+
+    alertas.forEach(alerta => {
+        if(alerta.checked === true) arr.push(alerta.name);
+    });
+
+    localStorage.setItem('alertas', arr);
+    alert("Configuração Salva");
 }

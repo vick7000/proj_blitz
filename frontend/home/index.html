@@ -6,24 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="style.css">
+    
     <script src="../global/checklogin.js"></script>
 </head>
 <body onload="inicializar()">
     <div class="container">
         <header>
-            <img src="../assets/hamburger.png" onclick="showMenu()" alt="Menu"/>
+            <img src="../assets/hamburger.png" id="hamburguer" onclick="showMenu()" alt="Menu"/>
             <img src="../assets/logo.png" class="logo" alt="Logo"/>
+            <ul>
+                <li><a href="../usuario/">Configurações</a></li>
+                <li><a onclick="logout()">Sair</a></li>
+            </ul>
         </header>
         <div class="map"> </div>
-    </div>
+    </div>   
     
     <div class="menu">
         <span onclick="closeMenu()">
             <img src="../assets/x.png" alt="Fechar"/>
         </span>
         <ul>
-            <li>Configurações</li>
-            <li>Sair</li>
+            <li><a href="../usuario/">Configurações</a></li>
+            <li><a onclick="logout()">Sair</a></li>
         </ul>
     </div>
 
@@ -44,4 +49,5 @@
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0xWCNQwnEqDZ7I7obm7rQzTD9ZfY8bYE&callback=initMap&v=weekly"
       async
     ></script>
+    <script src="../global/function.js"></script>
 </html>

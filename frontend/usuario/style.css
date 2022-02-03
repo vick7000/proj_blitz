@@ -2,7 +2,7 @@
 
 
 .alertas {
-    width: 95vw;
+    width: 95%;
     height: 2.6rem;
     border: 1px solid gray;
     border-radius: 10px;
@@ -72,4 +72,29 @@ tbody > tr:nth-child(3) {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: whitesmoke;
+}
+
+main {
+    width: 100%;
+    height: 90%;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+@media (min-width: 800px) {
+    main {
+        flex-direction: row;
+    }
+
+    .dados {
+        width: 50%;
+    }
+
+    .dir {
+        width: 50%;
+    }
 }
