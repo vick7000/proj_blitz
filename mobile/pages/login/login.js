@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, ToastAndroid, TouchableOpacity, Image } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import md5 from 'md5';
@@ -11,6 +11,12 @@ export default function Login({navigation}) {
     const [imagem, setImagem] = useState(require('../../assets/app/programmer.png'));
 
     const [cadastrando, setCadastrando] = useState(false);
+
+    useEffect(async () => {
+        if(await AsyncStorage.getItem('userdata') !== null) {
+            navigation.navigate('Main');
+        }
+    }, [])
 
     const autenticar = () => {
         let usuario = {
